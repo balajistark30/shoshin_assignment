@@ -45,7 +45,6 @@ class _AllOffersTabState extends State<AllOffersTab> {
         _items= tasks;
       });
     } catch (e) {
-      print('Error reading JSON: $e');
     }
   }
   Future<void> readDetailsJson() async {
@@ -61,7 +60,6 @@ class _AllOffersTabState extends State<AllOffersTab> {
         _events= tasks;
       });
     } catch (e) {
-      print('Error reading JSON: $e');
     }
   }
 
@@ -81,7 +79,7 @@ class _AllOffersTabState extends State<AllOffersTab> {
             ],
           ),
           const SizedBox(height: 16),
-          Container(
+          SizedBox(
             height: 200,
             child: CarouselSlider.builder(
               itemCount: _items.length,
@@ -102,11 +100,11 @@ class _AllOffersTabState extends State<AllOffersTab> {
                     ),
                     child:Column(
                       children: [
-                        Expanded(child: SizedBox()),
+                        const Expanded(child: SizedBox()),
                         Container(
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.8),borderRadius: BorderRadius.only(bottomRight: Radius.circular(8),bottomLeft: Radius.circular(8.0)),),
+                              color: Colors.black.withOpacity(0.8),borderRadius: const BorderRadius.only(bottomRight: Radius.circular(8),bottomLeft: Radius.circular(8.0)),),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
@@ -114,14 +112,14 @@ class _AllOffersTabState extends State<AllOffersTab> {
                               children: [
                                 Text(
                                   _items[index].brand.title,
-                                  style: TextStyle(color: Colors.white), // Adjust text color as needed
+                                  style: const TextStyle(color: Colors.white), // Adjust text color as needed
                                   overflow: TextOverflow.ellipsis,
                                 ),
-                                Text("Get Rs.${_items[index].earned}", style: TextStyle(color: Colors.white), // Adjust text color as needed
+                                Text("Get Rs.${_items[index].earned}", style: const TextStyle(color: Colors.white), // Adjust text color as needed
                                 ),
                                 Text(
                                   "${_items[index].totalLead} Users",
-                                  style: TextStyle(color: Colors.white), // Adjust text color as needed
+                                  style: const TextStyle(color: Colors.white), // Adjust text color as needed
                                 ),
                               ],
                             ),
@@ -169,7 +167,7 @@ class _AllOffersTabState extends State<AllOffersTab> {
               itemBuilder: (_, index) {
                 if (_items.isEmpty || index >= _items.length) {
 
-                  return SizedBox();
+                  return const SizedBox();
                 }
 
                 return Padding(
@@ -191,21 +189,21 @@ class _AllOffersTabState extends State<AllOffersTab> {
                           ),
                         ),
                       ),
-                      title: Text(_items[index].brand.title,style: TextStyle(fontWeight: FontWeight.bold),),
+                      title: Text(_items[index].brand.title,style: const TextStyle(fontWeight: FontWeight.bold),),
                       subtitle: Text(_items[index].shortDesc,overflow: TextOverflow.ellipsis,),
                       trailing: Row(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(Icons.flash_on, color: Colors.orange), // Flash icon
-                          SizedBox(width: 4), // Spacer between icon and text
-                          Text(_items[index].earned,style: TextStyle(fontSize: 14),),
+                          const Icon(Icons.flash_on, color: Colors.orange), // Flash icon
+                          const SizedBox(width: 4), // Spacer between icon and text
+                          Text(_items[index].earned,style: const TextStyle(fontSize: 14),),
                         ],
                       ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                         side: BorderSide(
-                          color: Color(int.tryParse("0xFF${_items[index].customData!.dominantColor}") ?? 0),
+                          color: Color(int.tryParse("0xFF${_items[index].customData.dominantColor}") ?? 0),
                           width: 2.0,
                         ),
                       ),
